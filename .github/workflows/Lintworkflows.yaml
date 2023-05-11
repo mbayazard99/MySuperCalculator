@@ -1,4 +1,5 @@
-name:   Lint_workflows
+
+name:  Lint_work_flows
 
 on:
 
@@ -30,9 +31,7 @@ jobs:
 
     steps:
 
-    
-
-      - name: Hado_lint Analysis
+      - name: Hadolint analysis
 
         uses: actions/checkout@v2
 
@@ -59,3 +58,7 @@ jobs:
       - name: Run Super-Linter
 
         uses: github/super-linter@v5
+
+
+
+
