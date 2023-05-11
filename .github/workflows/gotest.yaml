@@ -1,0 +1,22 @@
+name: Go Tests
+on:
+ push:
+  branches:
+   - main
+
+jobs:
+ gotest:
+  runs-on: ubuntu-latest
+  strategy:
+   matrix:
+    version: [1.17, 1.18, 1.19]
+  steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
+
+  - name: Set up Go
+    uses: actions/setup-go@v2
+    with:
+     go-version: ${{ matrix.version }}
+  - name: Run tests
+    run: go test ./...
