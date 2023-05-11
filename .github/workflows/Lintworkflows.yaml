@@ -1,0 +1,59 @@
+name:   Lint_workflows
+
+on:
+
+  pull_request:
+
+  push:
+
+  workflow_dispatch:
+
+jobs:
+
+  semgrep_analysis:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Analysis code
+
+        uses: actions/checkout@v2
+
+      - name: Runing Semgrep
+
+        uses: returntocorp/semgrep-action@v1
+
+  dockerfile_hadolint_analysis:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Hado_lint
+
+        uses: actions/checkout@v2
+
+      - name: Runing Hadolint
+
+        uses: hado_lint/hado_lint-action@master
+
+        with:
+
+          dockerfile: "Dockerfile"
+
+  super_linter:
+
+    if: github.event_name == 'pull_request'
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Super Linter Execution
+
+        uses: actions/checkout@v2
+
+      - name: Run Super-Linter
+
+        uses: github/super-linter@v5
