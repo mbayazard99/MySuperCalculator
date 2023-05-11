@@ -30,7 +30,9 @@ jobs:
 
     steps:
 
-      - name: Hado_lint
+    
+
+      - name: Hado_lint Analysis
 
         uses: actions/checkout@v2
 
